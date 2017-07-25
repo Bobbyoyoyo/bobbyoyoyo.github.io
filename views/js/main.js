@@ -403,13 +403,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -418,29 +418,27 @@ var resizePizzas = function(size) {
 
   changeSliderLabel(size);
 
-  // 返回不同的尺寸以将披萨元素由一个尺寸改成另一个尺寸。由changePizzaSlices(size)函数调用
-  // 遍历披萨的元素并改变它们的宽度
-  function changePizzaSizes(size) {
+   // 返回不同的尺寸以将披萨元素由一个尺寸改成另一个尺寸。由changePizzaSlices(size)函数调用  
+  function changePizzaSizes(size){
+    var randomPizzaContainer = document.getElementsByClassName('randomPizzaContainer');
+    var pizzaWidth;
     switch(size) {
-        case "1":
-          return newWidth = 25;
-          break;
-        case "2":
-          return newWidth = 33.3;
-          break;
-        case "3":
-          return newWidth = 50;
-          break;
-        default:
-          console.log("bug in sizeSwitcher");
+      case "1":
+        pizzaWidth = 25;
+        break;
+      case "2":
+        pizzaWidth = 33.33;
+        break;
+      case "3":
+        pizzaWidth = 50;
+        break;
+      default:
+        console.log("bug in sizeSwitcher");
+    };
+    for (var i = 0; i < randomPizzaContainer.length; i++) {
+        randomPizzaContainer[i].style.width = pizzaWidth + '%';
       }
-    var randomPizzas = ducument.querySelectorAll('.randomPizzaContainer');
-
-    for (var i = 0; i < randomPizzas.length; i++) {
-      randomPizzas[i].style.width = newWidth + "%";
-    }
   }
-
   changePizzaSizes(size);
 
   // User Timing API 太棒了
@@ -486,10 +484,11 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+  var items = document.getElementsByClassName('mover');
+
   var cachedScrollTop = document.body.scrollTop;
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((cachedScrollTop/ 1250) + (i % 5));
+    var phase = Math.sin(cachedScrollTop / 1250 + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -510,7 +509,9 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  var height = window.screen.availHeight;
+  var amount = Math.floor(height/s) * cols;
+  for (var i = 0; i < amount; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
