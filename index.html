@@ -1,75 +1,326 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content=" FILL ME IN ">
-    <meta name="author" content=" FILL ME IN ">
-    <title>Ni Tian‘s gift</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- 嗯，web 字体对速度的影响有多大呢？测量一下吧-->
-    <!-- 我使用了 Web Font Loaded 来代替原有的方法 -->
-    <!-- <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> -->
-    <link href="css/print.css" rel="stylesheet" media="print">
-    <style>
-	html {
-	  font-size: 100%;
-	  overflow-y: scroll;
-	  -webkit-tap-highlight-color: rgba(0,0,0,0);
-	  -ms-text-size-adjust: 100%;
-	  -webkit-text-size-adjust: none;
-	}
-	body { margin: 0; font-size: 14px; line-height: 1.61; font-weight: 400; }
-	body, button, input, select, textarea { font-family: 'Open Sans', sans-serif; color: #333; }
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-	a { color: #12C; }
-	a:visited { color: #61C; }
-	a:focus { outline: thin dotted; }
-	a:hover, a:active { color: #c00; outline: 0; }
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 
-	b, strong { font-weight: bold; }
-	pre, code { font-family: monospace, monospace; font-size: 1em; }
-	ul, ol { margin: 1em 0; padding: 0 0 0 20px; }
-	img { border: 0; max-width: 100%; }
+    <title>Hello, world!</title>
+    <style type="text/css">
+      .circle {
+        height: 75px;
+        width: 75px;
+        background-color: #52b2dc;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        z-index: -1；
+      }
 
-	body { background: #fff; }
-	header, footer, .container { max-width: 45em; margin: 0 auto; }
+      .square {
+        height: 60px;
+        width: 60px;
+        background: #e1ce5d;
+        display: inline-block;
+        position: absolute;
+        right: 5vw;
+        top: 20px;
+        z-index: -1；
+      }
 
-	header { padding: 0 0.5em; color: #C90B0B; }
-	header img { border-radius: 40px; float: left; }
-	header p { font-size:1.5em; font-weight: bold; padding-left: 4em;}
-	header p span { font-size: 0.8em; font-weight: normal;}
+      .rec {
+        height: 250px;
+        width: 75px;
+        background: #dc5e5e;
+        display: inline-block;
+        position: absolute;
+        left: 5vw;
+        bottom: 20px;
+        z-index: -1；
+      }
 
-	.hero { padding: 2em; background-color: #f8f8f8; font-size:1.2em;
-	  border-bottom: 1px solid #ccc;
-	  border-top: 1px solid #ccc;
-	}
+      .next {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+      }
 
-	.content { padding: 1em 1em; }
-	.content li { list-style-type: none; font-size: 1.1em;}
-	li img { float:left; padding-right: 1em; }
-	li p { font-size: 0.9em; font-style: italic; }
+      .main {
+        text-align: left; 
+        font-size: 16px;
+        width: 400px;
+        height: 500px;
+        margin: 30px 0;
+        position: absolute;
+        display: block;
+        top: 30px;
+        left: 24px;
+        right: 0;
+        bottom: 0;
+      }
 
-	footer {
-	  padding: 0 0.5em;
-	  border-top: 1px solid #ccc;
-	}
-	footer span { float: right; font-style: italic; }
+      .main span {
+        display: inline-block;
+        padding: 0;
+        margin: 0；
+        border：0；
+      }
 
-	/* Smartphones (portrait) */
-	@media only screen and (max-width: 480px) {
-	  body { font-size: 12px;}
-	  header p { padding-left: 4.5em;}
-	}
+      .pageTwo {
+        font-size: 16px;
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        top: 30px;
+        left: 24px; 
+        display: none;   
+
+      }
+
+      .pageTwo span {
+        display: block;
+      }
+      
+     
+
+      .swiper-container {
+      width: 100%;
+      height: 100%;
+      margin-left: -20px;
+      }
+
+      .swiper-slide {
+      text-align: center;
+      height: 400px;
+      padding: 10px;
+      font-size: 18px;
+      background: #fff;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      }
+
+      .swiper-slide:nth-child(1) {
+        width: 50%;
+      }
+
+      .swiper-slide:nth-child(4) {
+        width: 50%;
+      }
+
+      .pageThree {
+        text-align: left; 
+        font-size: 16px;
+        width: 400px;
+        height: 500px;
+        position: absolute;
+        top: 100px;
+        left: 24px;
+        right: 0;
+        bottom: 0;
+        display: none;
+      }
+
+      .pageThree textarea {
+        font-size: 16px;
+        height: 500px;
+        width: 400px;
+        background-color:transparent;
+        font-size: 16px;
+        resize: none;
+        border: none;
+        outline: none；
+      }
+
+      .pageFour {
+       text-align: left; 
+        font-size: 16px;
+        width: 400px;
+        height: 500px;
+        margin: 30px 0;
+        position: absolute;
+        display: none;
+        top: 30px;
+        left: 24px;
+        right: 0;
+        bottom: 0;
+      }
+
+      .pageFour span {
+        display: block;
+        font-size: 16px;
+      }
+
+      .pageFour img {
+       margin: 0 auto;
+      }
+
     </style>
   </head>
-
   <body>
-  
-
-    <div class="container">     
-            <img src="views/poster.jpg">        
+    <div class="circle"></div>
+    <div class="square"></div>
+    <div class="rec"></div>
+    <div class="main">
+      <h4>你好，新朋友。相见不晚。</h4>
+      <span>这里是所谓的“腰群”。</span>
+      <span>最初的朋友因共同热爱的腰乐队，</span>
+      <span>相识于2017年的内耳音乐节，</span>
+      <span>同时创建了“幽暗的最高频道”。</span>
+      <span>后因种种波折和数次挑逗红线经历了</span>
+      <span>“别忘却身心的和睦”</span>
+      <span>“夏天旗帜鲜明”</span>
+      <span>“晕倒在大国的怀”，</span>
+      <span>如今是“对抗是单调的悲伤舞”.</span>
+      <hr>
+      <span>所以你也看到了，想要在各种辗转中不被遗落，</span>
+      <span>最好的办法就是在这里多交上几个好朋友。</span>
+      <span>幸运的是依靠着大家某种程度上的志同道合，</span>
+      <span>在这里交到好朋友实在并不是件麻烦事。</span>
+      <hr>
+      <span>2019年10月，为了在漫天竞走的咸鱼间更好地玩耍，</span>
+      <span>制定了一些所谓的规则，入群后请在群公告查看。</span>
+      <span>请尊重并遵守它们，因为制定的过程实在并不容易。</span>
+      <span>同样，大家都觉着相遇不易，又都生活在这样一个</span>
+      <span>世界呢分钟的时代里，故事的方向总是和想要的并</span>
+      <span>不一样，经常心情不好，萌生退意。</span>
+      <span>为了试着能把美好的东西留存起来，设立了公众号，</span>
+      <span>“荒愁的永动机”，欢迎关注。</span>
     </div>
+  <div class="pageTwo">
+        <span>简单一点讲，这里什么人都有，什么话题都聊。</span>
+        <span>有已为人父的爸爸们，</span>
+        <span>有爱发红包的爸爸<del>们</del>.</span>
+        <span>有在美好校园里的高中大学硕士博士生，</span>
+        <span>也有社会阵场上的勇将废柴迷茫男女孩。</span>
+        <span>还是看看图吧，随意截了一些，更多精彩你来发现。</span>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="kid/img/1.png" height="400px"></div>
+        <div class="swiper-slide"><img src="kid/img/2.png" height="400px"></div>
+        <div class="swiper-slide"><img src="kid/img/3.png" height="400px"></div>
+        <div class="swiper-slide"><img src="kid/img/4.png" height="400px"></div>
+      </div>
+    <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+      <span>好啦，我们的自我介绍就到这里。</span>
+      <span>下面换你啦，</span>
+      <span>填写一下你的称呼，分享一下你爱的音乐/书/电影</span>
+      <span>虽然形式了些，多少算打了个照面</span>
+      <span>然后截图一下，入群的时候发一下就好啦！</span>
+  </div>
+  
+  <div class="pageThree">
+    <form>
+      <textarea>简单介绍下自己！和大家分享一下你热爱的音乐/电影/书！</textarea>
+    </form>
+  </div>
+
+  <div class="pageFour">
+    <span>上一页截图好了吗？</span>
+    <span>没有的话就算了，进了群再说好了</span>
+    <span>下面是管理员的微信，添加的时候备注“腰”</span>
+    <span>相见不晚，一起来玩。</span>
+    <img src="kid/img/5.png" height="100px">
+  </div>
+  <div class="next">
+      <span>NEXT</span>
+  </div>
+    <!-- Optional JavaScript -->
     
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <script type="text/javascript">
+     var colorMove = function() {
+    if ($(".circle").css("top") === "20px") {
+      $( ".rec" ).animate({ "left": "85vw" }, "fast" )
+      $( ".square" ).animate({ "right": "85vw" }, "fast" )
+      $( ".circle" ).animate({ "top": "85vh" }, "fast" )
+      }
+    else{
+      $(".pageTwo").fadeOut("slow")
+      $( ".rec" ).animate({ "left": "5vw" }, "fast" )
+      $( ".square" ).animate({ "right": "5vw" }, "fast" )
+      $( ".circle" ).animate({ "top": "20px" }, "fast" )
+    }
+  };
+    var x;
+    pageThis = function(){
+      if ($(".main").css("display") === "block") {
+        x = 1;
+        return x;
+      }
+      if ($(".pageTwo").css("display") === "block") {
+        x = 2;
+        return x;
+      }
+      if ($(".pageThree").css("display") === "block") {
+        x = 3;
+        return x;
+      }
+     }
+  </script>
+
+    <script type="text/javascript">
+      $(".next").click(function(){
+        switch( pageThis() ) {
+          case 1 :
+            colorMove();
+            $(".main").fadeOut();
+            $(".pageTwo").fadeIn();
+            break;
+          case 2 :
+            colorMove();
+            $(".pageTwo").fadeOut();
+            $(".pageThree").fadeIn();
+            break;
+          case 3 :
+            colorMove();
+            $(".pageThree").fadeOut();
+            $(".next").fadeOut();
+            $(".pageFour").fadeIn();
+            break;
+        }
+      })
+      
+    </script>
+
+   
+    <script src="https://unpkg.com/swiper/js/swiper.js"></script>
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 3,
+        spaceBetween: 15,
+        freeMode: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+      });
+    </script>
   </body>
 </html>
