@@ -5,11 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="./assets/swiper.min.css">
+    <link rel="stylesheet" href="./assets/bootstrap.min.css">
 
     <title>腰群入群指南</title>
     <style type="text/css">
@@ -22,7 +19,6 @@
         position: absolute;
         left: 20px;
         top: 20px;
-        z-index: -1；
       }
 
       .square {
@@ -33,7 +29,6 @@
         position: absolute;
         right: 5vw;
         top: 20px;
-        z-index: -1；
       }
 
       .rec {
@@ -44,7 +39,10 @@
         position: absolute;
         left: 5vw;
         bottom: 20px;
-        z-index: -1；
+      }
+
+      .square, .rec, .circle {
+        z-index: -1;
       }
 
       .next {
@@ -52,6 +50,7 @@
         right: 20px;
         bottom: 20px;
         font-weight: bold;
+        z-index: 10;
       }
 
       .main {
@@ -82,8 +81,7 @@
         position: absolute;
         top: 30px;
         left: 24px; 
-        display: none;   
-
+        display: none;
       }
 
       .pageTwo span {
@@ -95,7 +93,6 @@
       .swiper-container {
       width: 100%;
       height: 100%;
-      margin-left: -20px;
       }
 
       .swiper-slide {
@@ -148,7 +145,7 @@
         font-size: 16px;
         resize: none;
         border: none;
-        outline: none；
+        outline: none;
       }
 
       .pageFour {
@@ -171,9 +168,11 @@
       }
 
       .pageFour img {
-       margin: 0 auto;
+        display: block;
+        width: 50vw;
+        height: 50vw;
+        margin: 50px auto;
       }
-
     </style>
   </head>
   <body>
@@ -231,9 +230,7 @@
   </div>
   
   <div class="pageThree">
-    <form>
-      <textarea placeholder="简单介绍下自己！和大家分享一下你热爱的音乐/电影/书！"></textarea>
-    </form>
+    <textarea placeholder="简单介绍下自己！和大家分享一下你热爱的音乐/电影/书！"></textarea>
   </div>
 
   <div class="pageFour">
@@ -249,9 +246,10 @@
     <!-- Optional JavaScript -->
     
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./assets/jquery.min.js"></script>
+    <script src="./assets/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./assets/swiper.min.js"></script>
+
      <script type="text/javascript">
      var colorMove = function() {
     if ($(".circle").css("top") === "20px") {
@@ -306,10 +304,6 @@
       })
       
     </script>
-
-   
-    <script src="https://unpkg.com/swiper/js/swiper.js"></script>
-    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
