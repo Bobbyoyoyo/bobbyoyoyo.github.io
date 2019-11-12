@@ -10,6 +10,17 @@
 
     <title>腰群入群指南</title>
     <style type="text/css">
+      @media screen and (min-width: 1000px) {
+        .mobile {
+          display:none;
+          }
+        .reminder {
+          display:block;
+        }
+      }
+        .reminder {
+        display:none;
+      }
       .circle {
         height: 75px;
         width: 75px;
@@ -176,6 +187,8 @@
     </style>
   </head>
   <body>
+    <div class="reminder">请用手机打开啦！</div>
+    <div class="mobile">
     <div class="circle"></div>
     <div class="square"></div>
     <div class="rec"></div>
@@ -240,6 +253,7 @@
   </div>
   <div class="next">
       <span>NEXT</span>
+  </div>
   </div>
     <!-- Optional JavaScript -->
     
